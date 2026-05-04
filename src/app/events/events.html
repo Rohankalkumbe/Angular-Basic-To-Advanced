@@ -1,0 +1,58 @@
+<p>events works!</p>
+
+<button (click)="increment()">Click Me</button>
+
+<p>Count: {{count}}</p>
+
+ <!-- Event Object -->
+
+<button (click)="ShowEvent($event)">Show Event in console</button>
+
+<!-- Example 2 -->
+
+<input (input)="updateUser($event.target.value)">
+<p>Your Name: {{username}}</p>
+
+<!-- Event with Signals -->
+
+<button (click)="increment1()">Event with Signal</button>
+<p>Count: {{count1()}}</p>
+
+<!-- form submission -->
+
+<form (submit)="onSubmit($event)">
+    <input type="text" name="username" placeholder="Enter your username" />
+    <input type="email" name="email" placeholder="Enter your email" />
+    <input type="number" name="age" placeholder="Enter your age" />
+    <input type="date" name="dob" placeholder="Enter your date of birth" />
+    <input type="number" name="quantity" placeholder="Enter Phone Number" />
+    <button type="submit">Submit</button>
+</form>
+
+
+<h2>Event Types</h2>
+ <!-- 1. Click Event -->
+
+<button (click)="handleOnclick()" > Click Me</button>
+
+<!-- 2. Input Event -->
+
+<input (input)="OnTyping($event)" placeholder="Type Anything..."/>
+
+<!-- 3. Keyup Event & Focus Events & Blur Events -->
+
+<input (keyup)="OnKeyUp($event)" (blur)="onBlur()" (focus)="onFocus()" placeholder="Press Any key..." />
+
+<!-- 4. Mouse Event -->
+<div (mouseover)="OnMouseOver()" (mouseleave)="OnLeave()" class="hour-box">Hover Text</div>
+
+
+<!-- Get value using Template Reference Variable -->
+
+<h2>Get value using Template Reference Variable</h2>
+
+<input #myInput placeholder="Enter Email...">
+
+<button (click)="getEmail(myInput.value)">Get Email</button>
+
+<p>Email: {{email}}</p>

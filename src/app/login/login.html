@@ -1,0 +1,22 @@
+<p>login works!</p>
+
+<h2>User: {{loginpage}}</h2>
+
+<!-- Property Binding -->
+
+<input [value]="name" />
+<img [src]="imageUrl" alt="Beautiful Scenery" />
+
+<button [disabled]="isEnabled">Enable or Disable</button>
+
+<!-- Class and Style Binding -->
+
+<div [class.active]="isActive">Active or DeActive</div>
+
+<div [style.width.px]="boxwidth" [style.backgroundColor]="bgcolor">Styled Box</div>
+
+<!-- Signal Binding -->
+
+<p [innerText]="'Count: ' + count()"></p>
+
+

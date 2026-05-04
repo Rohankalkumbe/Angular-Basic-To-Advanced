@@ -1,0 +1,11 @@
+.hour-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  /* border-radius: 50%; */
+  background-color: #0b0fdf;
+  margin: 5px;
+}
