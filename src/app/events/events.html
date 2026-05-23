@@ -56,3 +56,185 @@
 <button (click)="getEmail(myInput.value)">Get Email</button>
 
 <p>Email: {{email}}</p>
+
+<!-- @IF-Else // Else-If in Angular -->
+
+<h2>@IF-Else // Else-If in Angular</h2>
+
+<input (input)="updateAge($event.target.value)" placeholder="Enter Your Age...">
+
+@if(age >=18){
+    <p>Person is an Adult</p>
+}
+
+@else if (age >=13){
+    <p>Person is a Teenager</p>
+}
+
+@else if (age >=0){
+    <p>Person is a Child</p>
+}
+
+@else{
+    <p>Invalid Age</p>
+}
+
+<!-- Toggle Display Hide-show -->
+<h2>Toggle Display Hide-show</h2>
+
+<button (click)="toggleVisibility()">Toggle Visibility</button>
+
+@if(isVisible){
+    <p>This text is visible</p>
+}
+
+
+<h2>Home, Profile, Settings Buttons in @Else-If</h2>
+
+<button (click)="section='Home'">Home</button>
+<button (click)="section='Profile'">Profile</button>
+<button (click)="section='Settings'">Settings</button>
+
+@if(section === 'Home'){
+    <h3>Welcome to the Home Section</h3>
+}   
+@else if(section === 'Profile'){
+    <h3>Welcome to the Profile Section</h3>
+}
+@else if(section === 'Settings'){
+    <h3>Welcome to the Settings Section</h3>
+}
+
+
+<!-- @Switch Statement -->
+
+<h2>@Switch Statement</h2>
+
+<button (click)="color='Red'">Red</button>
+<button (click)="color='Green'">Green</button>  
+<button (click)="color='Blue'">Blue</button>
+
+@switch(color){
+    @case('Red'){
+        <p>You selected Red color</p>
+    }
+    @case('Green'){
+        <p>You selected Green color</p>
+    }
+    @case('Blue'){
+        <p>You selected Blue color</p>
+    }
+
+}
+
+<h2>Food Categories: fruit, veg, non-veg : switch statement</h2>
+
+<input (input)="updateCategories($event.target.value)" placeholder="Enter Categories" />
+
+@switch(Categories){
+    @case('fruit'){
+        <h4>Food Category</h4>
+    }
+    @case('veg'){
+        <h4>Vegetarian Food</h4>
+    }
+    @case('non-veg'){
+        <h4>Non-Vegetarian Food</h4>
+    }
+    @default{
+        <h4>Please select a valid food category</h4>
+    }
+
+}
+
+<h3>For Loop Example</h3>
+
+@for(fruit of items; track $index; let i = $index){
+    <p>{{fruit}}</p>
+    <button (click)="removeItem(i)">Delete</button>
+}
+
+
+<!-- For Loop Contextual Variables -->
+
+@for(num of numbers; track $index){
+
+    <div>
+    <strong>{{num}}</strong> 
+    <span> | Index: {{$index}}</span>
+    <span> | Even: {{$even}}</span>
+    <span> | Odd: {{$odd}}</span>
+    <span> | First: {{$first}}</span>
+    <span> | Last: {{$last}}</span>
+    <span> | Count: {{$count}}</span>
+    </div>
+
+}
+
+<!-- Data Types with Signals and SET and Update -->
+
+<h2>Data Types with Signals and SET and Update</h2>
+
+<h3>Numbers: {{values()}}</h3>
+
+<button (click)="setValues()">SET Signals</button>
+
+<button (click)="updateValues()">Update Signals</button>
+
+<h3>Effect with Signals</h3>
+
+<button (click)="toggleBtn()">Change Effect</button>
+
+
+<!-- Pipes in Angular -->
+
+<h2>Pipes in Angular: Built-in Pipes</h2>
+
+<h3>Uppper Case: {{name | uppercase}}</h3>
+
+<h3>Lower Case: {{uName | lowercase}}</h3>
+
+<!-- date pipes -->
+
+<h2>Date Pipes</h2>
+<p>Date: {{today}}</p>
+<p>Date: {{today | date}}</p>
+<p>Short Date: {{today | date:'short'}}</p>
+<p>Medium Date: {{today | date:'medium'}}</p>
+<p>Long Date: {{today | date:'long'}}</p>
+<p>Full Date: {{today | date:'full'}}</p>
+<p>Custom Date: {{today | date:'dd-MM-yyyy'}}</p>
+
+
+<h2>Currency</h2>
+
+<p>INR: {{amount | currency:'INR'}}</p>
+<p>USD: {{amount | currency:'USD'}}</p>
+<p>EUR: {{amount | currency:'EUR'}}</p>
+<p>Custom Currency: {{amount | currency:'CAD'}}</p>
+<P>Custom: {{amount | currency: 'INR': 'symbol':'1.0-0'}}</P>
+
+<h2>Percentage Pipe</h2>
+
+<p>Percentage: {{per | percent}}</p>
+
+<h2>JSON Pipe</h2>
+
+<p>Person Details: {{Person | json}}</p>
+
+
+<!-- Signals Graph -->
+
+<h2>Signals Graph</h2>
+
+<p>Count: {{count2()}}</p>
+<p>Double Count: {{doubleCount()}}</p>
+
+<button (click)="incre()">Double</button>
+
+<h2>Example 2: Count and Price</h2>
+<p>Count: {{count3()}}</p>
+<p>Price: {{price()}}</p>
+<p>Total: {{total()}}</p>
+<button (click)="updateCount()">Increase Count</button>
+<button (click)="updatePrice()">Increase Price</button>

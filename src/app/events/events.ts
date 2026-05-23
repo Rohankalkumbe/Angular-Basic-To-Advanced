@@ -1,8 +1,9 @@
-import { Component, signal, StreamingResourceOptions } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, computed, effect, signal, StreamingResourceOptions } from '@angular/core';
 
 @Component({
   selector: 'app-events',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './events.html',
   styleUrl: './events.css',
 })
@@ -85,6 +86,147 @@ export class Events {
 
   getEmail(value: string){
     this.email = value;
+  }
+
+  // @IF-Else in Angular
+
+  age: number = 0;
+
+  updateAge(value: string){
+    this.age = Number(value);
+  }
+
+  // Toggle Display Hide-show
+
+  isVisible = true;
+
+  toggleVisibility(){
+    this.isVisible = !this.isVisible;
+  }
+
+  // @Switch-Case in Angular
+  section = "Home";
+
+  color = "red";
+
+  Categories = "";
+
+  updateCategories(value: string){
+    this.Categories = value.toLowerCase();
+  }
+
+  // @For Loop in Angular
+
+  items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
+
+  removeItem(i: number){
+    this.items.splice(i, 1);
+
+  }
+
+  // For Loop Contextual Variables
+
+  numbers = [1,2,3,4,5];
+  
+// Data Types with signals and SET, UPDATE methods
+
+  values = signal<number[]>([1,20, 50, 100])
+  // SET
+
+  setValues(){
+    this.values.set([20,30,40, 50, 60]);
+  }
+
+  // UPDATE
+  updateValues(){
+    this.values.update(arr => [...arr,70,80,90,100])
+  }
+
+  // Effects with Signals
+
+  isDarkMode = signal(false);
+
+  constructor(){
+    effect(() =>{
+      if(this.isDarkMode()){
+        document.body.style.backgroundColor = 'black';
+        document.body.style.color = 'white';
+      } else {
+        document.body.style.backgroundColor = 'white';
+        document.body.style.color = 'black';
+      }
+    });
+  }
+
+  toggleBtn(){
+    this.isDarkMode.update(mode => !mode);
+  }
+
+  // Pipes in Angular
+
+  // Built-in Pipes
+
+  name: string = "Rohan";
+  uName: string = "Gayatri";
+
+  // Date Pipe
+
+  today: Date = new Date();
+
+  // Currency Pipe
+
+  amount: number = 125000;
+
+  // Percent pipe
+
+  per = 0.75;
+
+  // Json pipe
+
+  Person = {
+    name: "Rohan",
+    age: 23,
+    number: 9049045218,
+    City: "Mangalwedha"
+
+  }
+
+  // Signal Graph
+
+  count2 = signal(1);
+
+  doubleCount = computed<number>(() => this.count2() * 2);
+
+  constructor2(){
+    effect(()=>{
+      console.log("Double Count:", this.doubleCount());
+    })
+  }
+
+  incre(){
+    this.count2.update(count => count + 1);
+  }
+
+  // Example two
+
+  count3 = signal(1);
+
+  price = signal(1);
+
+  total = computed(()=> this.count3() * this.price());
+
+  constructor3(){
+    effect(()=>{
+      console.log("Total Price:", this.total());
+    })
+  }
+
+  updateCount(){
+    this.count3.update(count => count + 1);
+  }
+
+  updatePrice(){
+    this.price.update(price => price + 1);
   }
 }
 

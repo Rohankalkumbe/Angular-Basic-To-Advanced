@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { Login } from './login/login';
 import { Events } from './events/events';
 import { CounterApp } from './counter-app/counter-app';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Login, Events, CounterApp],
+  imports: [Login, Events, CounterApp, RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
